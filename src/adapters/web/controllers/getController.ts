@@ -1,12 +1,9 @@
 import { TmakeGetController } from ".";
-import { HttpRequest } from "../middlewares";
 
-export const makeGetController: TmakeGetController = ({
-  listAllInteractor,
-}) => {
+export const makeGetController: TmakeGetController = ({ interactor }) => {
   return async () => {
     try {
-      const getAll = await listAllInteractor();
+      const getAll = await interactor.listAll();
       return {
         statusCode: 200,
         body: getAll,

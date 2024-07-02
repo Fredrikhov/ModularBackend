@@ -1,21 +1,21 @@
-import { addInteractor, listAllInteractor } from "../../../use-cases";
 import { makeGetController } from "./getController";
 import { HttpRequest, HttpResponse } from "../middlewares";
 import { makePostController } from "./postController";
+import { Tinteractor, interactor } from "../../../use-cases";
 
 export type TmakeGetController = ({
-  listAllInteractor,
+  interactor,
 }: {
-  listAllInteractor: () => Promise<FirebaseFirestore.DocumentData[]>;
+  interactor: Tinteractor;
 }) => (HttpRequest: HttpRequest) => Promise<HttpResponse>;
 
 export type TmakePostController = ({
-  addInteractor,
+  interactor,
 }: {
-  addInteractor: ({}) => object;
+  interactor: Tinteractor;
 }) => (HttpRequest: HttpRequest) => Promise<HttpResponse>;
 
-const getController = makeGetController({ listAllInteractor });
-const postController = makePostController({ addInteractor });
+const getController = makeGetController({ interactor });
+const postController = makePostController({ interactor });
 
 export { getController, postController };

@@ -26,7 +26,7 @@ ModularBackend is a backend application designed with clean architecture princip
    Create a `.env` file in the root directory and add the following variables:
 
    ```bash
-   serviceAccount={'your-firebase-serivce-account'}
+   serviceAccount='{your-firebase-serivce-account}'
    PORT=3000
    ```
 
@@ -60,9 +60,8 @@ After starting the application, it will be running on `http://localhost:3000`. Y
  ┃ ┗ 📂express
  ┃ ┃ ┗ 📜index.ts
  ┗ 📂use-cases
- ┃ ┣ 📜addInteractor.ts
  ┃ ┣ 📜index.ts
- ┃ ┗ 📜listAllInteractor.ts
+ ┃ ┗ 📜makeInteractor.ts
 
 ```
 

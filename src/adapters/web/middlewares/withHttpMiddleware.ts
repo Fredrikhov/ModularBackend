@@ -34,13 +34,7 @@ export const withHttpMiddleware = (controller: Tcontroller) => {
         browser: req.get("User-Agent"),
       },
     };
-    try {
-      const httpReponse: HttpResponse = await controller(httpRequest);
-      return res.status(httpReponse.statusCode).send(httpReponse.body);
-    } catch (error) {
-      return res.status(500).json({
-        error: error,
-      });
-    }
+    const httpReponse = await controller(httpRequest);
+    return res.status(httpReponse.statusCode).send(httpReponse.body);
   };
 };

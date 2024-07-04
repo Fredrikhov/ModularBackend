@@ -59,7 +59,7 @@ After starting the application, it will be running on `http://localhost:3000`. Y
  ┣ 📂frameworks
  ┃ ┗ 📂express
  ┃ ┃ ┗ 📜index.ts
- ┗ 📂use-cases
+ ┗ 📂interactors
  ┃ ┣ 📜index.ts
  ┃ ┗ 📜makeInteractor.ts
 
@@ -68,7 +68,7 @@ After starting the application, it will be running on `http://localhost:3000`. Y
 - **`adapters/`**: Contains code for interacting with external systems (e.g., database, web frameworks).
 - **`entities/`**: Defines core business entities.
 - **`frameworks/`**: Contains framework-specific code (e.g., Express).
-- **`use-cases/`**: Contains business logic and application use cases.
+- **`Interactors/`**: Contains business logic and application use cases.
 
 ## Contributing
 

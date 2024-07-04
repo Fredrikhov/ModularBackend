@@ -1,6 +1,6 @@
-import { TmakeGetController } from ".";
+import { MakeControllerType } from ".";
 
-export const makeGetController: TmakeGetController = ({ interactor }) => {
+export const makeGetController: MakeControllerType = ({ interactor }) => {
   return async () => {
     try {
       const getAll = await interactor.listAll();

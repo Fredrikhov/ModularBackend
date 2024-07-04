@@ -1,19 +1,18 @@
-import { TmakePostController } from ".";
-import { HttpRequest } from "../middlewares";
+import { MakeControllerType } from ".";
+import { HttpRequest } from "../middlewares/withHttpMiddleware";
 
-export const makePostController: TmakePostController = ({ interactor }) => {
-  return async (httpRequest: HttpRequest) => {
-    const commentInfo: { text: string } = httpRequest.body;
+export const makePostController: MakeControllerType = ({ interactor }) => {
+  return async ({ body }) => {
     try {
-      const posted = await interactor.add(commentInfo);
+      const posted = await interactor.add({ body });
       return {
         statusCode: 200,
         body: posted,
       };
     } catch (e) {
       return {
-        statusCode: 500,
-        body: e,
+        statusCode: 400,
+        body: (e as Error).message,
       };
     }
   };

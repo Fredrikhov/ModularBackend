@@ -1,11 +1,18 @@
+import { blogInterface } from "../Interactors";
 import { makeBlog } from "./blog";
 
 export type TmakeBlog = ({}) => {
-  ({ text }: { text: string }): { getText: () => { text: string } };
+  ({ text, id }: blogInterface): {
+    getText: () => { text: string };
+    getId: () => { id: string };
+  };
 };
 
 export type Tblog = {
-  ({ text }: { text: string }): { getText: () => { text: string } };
+  ({ text, id }: blogInterface): {
+    getText: () => { text: string };
+    getId: () => { id: string };
+  };
 };
 
 const blog: Tblog = makeBlog({});

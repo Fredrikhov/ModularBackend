@@ -1,21 +1,17 @@
 import { makeGetController } from "./getController";
-import { HttpRequest, HttpResponse } from "../middlewares";
+import { HttpRequest, HttpResponse } from "../middlewares/withHttpMiddleware";
 import { makePostController } from "./postController";
-import { Tinteractor, interactor } from "../../../use-cases";
+import { Tinteractor, blogInterface, interactor } from "../../../Interactors";
+import { makePutController } from "./putController";
+import { makeDeleteController } from "./deleteController";
 
-export type TmakeGetController = ({
+export type MakeControllerType = ({
   interactor,
 }: {
   interactor: Tinteractor;
-}) => (HttpRequest: HttpRequest) => Promise<HttpResponse>;
+}) => ({ body }: { body: blogInterface }) => Promise<HttpResponse>;
 
-export type TmakePostController = ({
-  interactor,
-}: {
-  interactor: Tinteractor;
-}) => (HttpRequest: HttpRequest) => Promise<HttpResponse>;
-
-const getController = makeGetController({ interactor });
-const postController = makePostController({ interactor });
-
-export { getController, postController };
+export const getController = makeGetController({ interactor });
+export const postController = makePostController({ interactor });
+export const putController = makePutController({ interactor });
+export const deleteController = makeDeleteController({ interactor });

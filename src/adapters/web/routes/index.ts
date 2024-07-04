@@ -1,10 +1,15 @@
 import express from "express";
-import { withHttpMiddleware } from "../middlewares";
-import { getController, postController } from "../controllers";
+import { withHttpMiddleware } from "../middlewares/withHttpMiddleware";
+import {
+  deleteController,
+  getController,
+  postController,
+  putController,
+} from "../controllers";
 
-const router = express.Router();
+export const router = express.Router();
 
 router.get("/", withHttpMiddleware(getController));
 router.post("/", withHttpMiddleware(postController));
-
-export { router };
+router.put("/", withHttpMiddleware(putController));
+router.delete("/", withHttpMiddleware(deleteController));

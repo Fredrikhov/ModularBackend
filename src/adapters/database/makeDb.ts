@@ -1,5 +1,4 @@
 import { TmakeDb } from ".";
-import { blog } from "../../entities";
 
 export const makeDb: TmakeDb = ({ firebaseDb }) => {
   return {
@@ -8,15 +7,24 @@ export const makeDb: TmakeDb = ({ firebaseDb }) => {
       const found = result.docs.map((document) => document.data());
       return found;
     },
-
     insert: async ({ blogHandler }) => {
-      const blogData = blogHandler.getText();
-      const result = firebaseDb.collection("blog").add(blogData);
+      const insertDoc = {
+        text: blogHandler.getText(),
+      };
+      const found = firebaseDb.collection("blog").add(insertDoc);
       return "Successfully added to DB";
     },
-
-    remove: () => {},
-
-    update: () => {},
+    remove: async ({ id }) => {
+      const found = firebaseDb.collection("blog").doc(id).delete();
+      return "Item deleted";
+    },
+    update: async ({ blogHandler }) => {
+      const insertDoc = {
+        text: blogHandler.getText(),
+      };
+      const docId = blogHandler.getId();
+      const found = firebaseDb.collection("blog").doc(docId.id).set(insertDoc);
+      return found;
+    },
   };
 };
